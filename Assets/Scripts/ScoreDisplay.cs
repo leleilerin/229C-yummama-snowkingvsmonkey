@@ -13,13 +13,13 @@ public class ScoreDisplay : MonoBehaviour
     void Start()
     {
         scoreP1Txt.text = $"Snow King: {GameManager.instance.ScoreP1}";
-        scoreP2Txt.text = $"Labubu: {GameManager.instance.ScoreP2}";
+        scoreP2Txt.text = $"Monkey: {GameManager.instance.ScoreP2}";
     }
 
     // Update is called once per frame
     void Update()
     {
         scoreP1Txt.text = $"Snow King: {GameManager.instance.ScoreP1}";
-        scoreP2Txt.text = $"Labubu: {GameManager.instance.ScoreP2}";
+        scoreP2Txt.text = $"Monkey: {GameManager.instance.ScoreP2}";
     }
 }
