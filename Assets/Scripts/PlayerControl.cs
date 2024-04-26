@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private bool isPlayer1;
+    
     private Vector2 move = new Vector2(0, 0);
     private float speed = 5f;
     
@@ -62,6 +63,18 @@ public class PlayerControl : MonoBehaviour
         else
         {
             return 0;
+        }
+    }
+
+    public bool IsPlayer1()
+    {
+        if (isPlayer1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

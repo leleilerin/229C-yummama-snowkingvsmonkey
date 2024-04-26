@@ -9,32 +9,58 @@ public class Shooting : MonoBehaviour
 {
     [SerializeField] private Transform shootPoint, hitPoint;
     [SerializeField] private Rigidbody2D bulletPrefab;
+    private bool isPlayer1;
+    private float cooldown = 0.7f;
+    private float timer;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        isPlayer1 = gameObject.GetComponent<PlayerControl>().IsPlayer1();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 projectile = CalculateProjectileV(shootPoint.position, hitPoint.position, 1f);
+        if (isPlayer1)
+        {
+            if (Input.GetKeyDown(KeyCode.W) && Time.time > timer)
+            {
+                Vector2 projectile = CalculateProjectileV(shootPoint.position, hitPoint.position, 1f, isPlayer1);
 
-        Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-        firedBullet.velocity = projectile;
+                Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+                firedBullet.velocity = projectile*1.1f;
+                timer = Time.time + cooldown;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow) && Time.time > timer)
+            {
+                Vector2 projectile = CalculateProjectileV(shootPoint.position, hitPoint.position, 1f, isPlayer1);
+
+                Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+                firedBullet.velocity = projectile*1.1f;
+                timer = Time.time + cooldown;
+            }
+        }
     }
 
-    Vector2 CalculateProjectileV(Vector2 start, Vector2 target, float t)
+    Vector2 CalculateProjectileV(Vector2 start, Vector2 target, float t, bool one)
     {
         float x, y;
         float vx, vy;
 
         x = Vector2.Distance(start, target);
-        y = Vector2.Distance(target, new Vector2(0,1.5f));
+        y = Vector2.Distance(target, new Vector2(target.x, start.y));
 
         vx = x / t;
-        vy = y / t + 0.5f * -9.81f * t;
+        vy = y / t + 0.5f * 9.81f * t;
+
+        if (!one)
+        {
+            vx = -vx;
+        }
 
         return new Vector2(vx, vy);
     }
