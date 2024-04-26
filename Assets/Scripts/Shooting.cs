@@ -29,7 +29,7 @@ public class Shooting : MonoBehaviour
                 Vector2 projectile = CalculateProjectileV(shootPoint.position, hitPoint.position, 1f, isPlayer1);
 
                 Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-                firedBullet.velocity = projectile*1.1f;
+                firedBullet.velocity = projectile;
                 timer = Time.time + cooldown;
             }
         }
@@ -40,7 +40,7 @@ public class Shooting : MonoBehaviour
                 Vector2 projectile = CalculateProjectileV(shootPoint.position, hitPoint.position, 1f, isPlayer1);
 
                 Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-                firedBullet.velocity = projectile*1.1f;
+                firedBullet.velocity = projectile;
                 timer = Time.time + cooldown;
             }
         }
@@ -48,7 +48,17 @@ public class Shooting : MonoBehaviour
 
     Vector2 CalculateProjectileV(Vector2 start, Vector2 target, float t, bool one)
     {
-        float x, y;
+        Vector2 distance = target - start;
+
+        float distX = distance.x;
+        float distY = distance.y;
+
+        float veloX = distX / t;
+        float veloY = distY / t + 0.5f * Mathf.Abs(Physics2D.gravity.y) * t;
+        
+        return new Vector2(veloX, veloY);;
+
+        /*float x, y;
         float vx, vy;
 
         x = Vector2.Distance(start, target);
@@ -62,6 +72,6 @@ public class Shooting : MonoBehaviour
             vx = -vx;
         }
 
-        return new Vector2(vx, vy);
+        return new Vector2(vx, vy);*/
     }
 }

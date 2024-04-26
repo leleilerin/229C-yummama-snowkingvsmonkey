@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private bool isPlayer1;
+    [SerializeField] private SpriteRenderer sprite;
     
     private Vector2 move = new Vector2(0, 0);
     private float speed = 5f;
@@ -31,7 +32,23 @@ public class PlayerControl : MonoBehaviour
             move = new Vector2(ArrowMovement(), 0);
             rb2d.velocity = move * speed;
         }
-        
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("player hit by bullet");
+            StartCoroutine(PlayerFlash());
+        }
+    }
+
+    private IEnumerator PlayerFlash()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+        StopCoroutine(PlayerFlash());
     }
 
     float ADMovement()

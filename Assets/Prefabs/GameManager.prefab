@@ -45,5 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreCount: 5
-  scoreP1: 0
-  scoreP2: 0
+  duration: 10
