@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite;
     
     private Vector2 move = new Vector2(0, 0);
-    private float speed = 5f;
+    private float speed = 10f;
     
     private Rigidbody2D rb2d;
     

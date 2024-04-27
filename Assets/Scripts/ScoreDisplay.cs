@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreDisplay : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class ScoreDisplay : MonoBehaviour
         if (GameManager.curTime <= 0)
         {
             timeTxt.text = "00:00";
+            SceneManager.LoadScene(2);
         }
         else
         {

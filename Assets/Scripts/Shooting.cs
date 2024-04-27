@@ -54,7 +54,7 @@ public class Shooting : MonoBehaviour
         float distY = distance.y;
 
         float veloX = distX / t;
-        float veloY = distY / t + 0.5f * Mathf.Abs(Physics2D.gravity.y) * t;
+        float veloY = distY / t + 0.9f * Mathf.Abs(Physics2D.gravity.y) * t;
         
         return new Vector2(veloX, veloY);;
 
