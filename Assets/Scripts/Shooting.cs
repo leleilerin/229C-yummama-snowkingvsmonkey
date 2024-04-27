@@ -10,7 +10,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform shootPoint, hitPoint;
     [SerializeField] private Rigidbody2D bulletPrefab;
     private bool isPlayer1;
-    private float cooldown = 0.7f;
+    private float cooldown = 0.5f;
     private float timer;
     
     // Start is called before the first frame update

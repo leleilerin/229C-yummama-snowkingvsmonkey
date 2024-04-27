@@ -35,7 +35,6 @@ public class ScoreDisplay : MonoBehaviour
         if (GameManager.curTime <= 0)
         {
             timeTxt.text = "00:00";
-            SceneManager.LoadScene(2);
         }
         else
         {

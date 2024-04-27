@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Time UP");
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
         
         minutes = Mathf.FloorToInt(curTime / 60f);
