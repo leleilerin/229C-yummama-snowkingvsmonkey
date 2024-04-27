@@ -44,7 +44,6 @@ public class BulletCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("Wall"))
         {
-            Destroy(gameObject);
             Debug.Log("hit wall");
         }
     }
