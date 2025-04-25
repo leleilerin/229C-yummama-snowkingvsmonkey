@@ -25,12 +25,12 @@ public class PlayerControl : MonoBehaviour
         if (isPlayer1)
         {
             move = new Vector2(ADMovement(), 0);
-            rb2d.velocity = move * speed;
+            rb2d.linearVelocity = move * speed;
         }
         else
         {
             move = new Vector2(ArrowMovement(), 0);
-            rb2d.velocity = move * speed;
+            rb2d.linearVelocity = move * speed;
         }
     }
 

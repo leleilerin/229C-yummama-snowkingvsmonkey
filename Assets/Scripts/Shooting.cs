@@ -29,7 +29,7 @@ public class Shooting : MonoBehaviour
                 Vector2 projectile = CalculateProjectileV(shootPoint.position, hitPoint.position, 1f, isPlayer1);
 
                 Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-                firedBullet.velocity = projectile;
+                firedBullet.linearVelocity = projectile;
                 timer = Time.time + cooldown;
             }
         }
@@ -40,7 +40,7 @@ public class Shooting : MonoBehaviour
                 Vector2 projectile = CalculateProjectileV(shootPoint.position, hitPoint.position, 1f, isPlayer1);
 
                 Rigidbody2D firedBullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-                firedBullet.velocity = projectile;
+                firedBullet.linearVelocity = projectile;
                 timer = Time.time + cooldown;
             }
         }
