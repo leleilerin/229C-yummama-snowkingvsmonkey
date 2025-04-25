@@ -8,16 +8,7 @@ public class EndgameAnalytics : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log(GameManager.instance.isTie);
-        if (!GameManager.instance.isTie)
-        {
-            Debug.Log("RUN");
-            WinCount(GameManager.instance.isLeftWin);
-        }
-        else
-        {
-            
-        }
+        WinCount(GameManager.instance.isLeftWin, GameManager.instance.isTie);
     }
 
     // Update is called once per frame
@@ -27,18 +18,26 @@ public class EndgameAnalytics : MonoBehaviour
     }
     
     //Method
-    public void WinCount(bool isLeftWin)
+    public void WinCount(bool isLeftWin, bool isTie)
     {
-        switch (isLeftWin)
+        if (!isTie)
         {
-            case true:
-                AnalyticsService.Instance.RecordEvent(AnalyticsManager.instance.leftWin);
-                Debug.Log("leftWin");
-                break;
-            case false:
-                AnalyticsService.Instance.RecordEvent(AnalyticsManager.instance.rightWin);
-                Debug.Log("rightWin");
-                break;
+            switch (isLeftWin)
+            {
+                case true:
+                    AnalyticsService.Instance.RecordEvent(AnalyticsManager.instance.leftWin);
+                    Debug.Log("leftWin");
+                    break;
+                case false:
+                    AnalyticsService.Instance.RecordEvent(AnalyticsManager.instance.rightWin);
+                    Debug.Log("rightWin");
+                    break;
+            }
+        }
+        else
+        {
+            AnalyticsService.Instance.RecordEvent(AnalyticsManager.instance.gameTie);
+            Debug.Log("tie");
         }
     }
 }

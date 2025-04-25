@@ -31,5 +31,10 @@ public class AnalyticsManager : MonoBehaviour
         { "winCount", 1 }
     };
 
-    
+    public CustomEvent gameTie = new CustomEvent("GameTie")
+    {
+        { "tieCount", 1 }
+    };
+
+
 }
