@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float scoreCount = 5;
+    public float scorePerHit;
     
     private static float scoreP1;
     public float ScoreP1 { get { return scoreP1;} set { scoreP1 = value; } }
@@ -43,8 +44,8 @@ public class GameManager : MonoBehaviour
         gameover = false;
         isTie = false;
         
-        scoreP1 = 20;
-        scoreP2 = 30;
+        scoreP1 = 0;
+        scoreP2 = 0;
 
         curTime = duration;
     }
@@ -54,15 +55,17 @@ public class GameManager : MonoBehaviour
         Timing();
     }
     
-    public void PlayerGotHit(bool one)
+    public void PlayerGotHit(bool isLeft)
     {
-        if (one)
+        if (isLeft)
         {
-            scoreP2 += scoreCount;
+            scoreP2 += scorePerHit;
+            AnalyticsManager.instance.LeftPlayerScored(false);
         }
         else
         {
-            scoreP1 += scoreCount;
+            scoreP1 += scorePerHit;
+            AnalyticsManager.instance.LeftPlayerScored(true);
         }
     }
 
