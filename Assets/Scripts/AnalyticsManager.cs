@@ -11,7 +11,6 @@ public class AnalyticsManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(this);
         Initialize();
     }
 

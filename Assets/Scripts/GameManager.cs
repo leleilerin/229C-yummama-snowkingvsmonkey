@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(this);
         /*if (instance == null)
         {
             instance = this;
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameover = false;
+        isTie = false;
         
         scoreP1 = 0;
         scoreP2 = 1; /////////
@@ -78,10 +78,12 @@ public class GameManager : MonoBehaviour
             if (scoreP1 > scoreP2)
             {
                 isLeftWin = true;
+                isTie = false;
             }
-            else if (scoreP2 < scoreP1)
+            else if (scoreP2 > scoreP1)
             {
                 isLeftWin = false;
+                isTie = false;
             }
             else
             {
