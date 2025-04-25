@@ -1967,7 +1967,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 198972418122862722, guid: 0165a711421746346b7a590f0eaa9c82, type: 3}
       propertyPath: duration
-      value: 90
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198972418122862722, guid: 0165a711421746346b7a590f0eaa9c82, type: 3}
       propertyPath: scoreCount

@@ -13,8 +13,6 @@ public class ScoreDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeTxt;
     [SerializeField] private TextMeshProUGUI resultTxt;
 
-    private AnalyticsManager analyticsManager;
-
     private float scoreP1;
     private float scoreP2;
     
@@ -47,12 +45,10 @@ public class ScoreDisplay : MonoBehaviour
         if (scoreP1 > scoreP2)
         {
             resultTxt.text = "Snow King WON!!!";
-            analyticsManager.WinCount(true);
         }
         else if (scoreP2 > scoreP1)
         {
             resultTxt.text = "Monkey WON!!!";
-            analyticsManager.WinCount(false);
         }
         else
         {

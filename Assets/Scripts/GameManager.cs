@@ -15,7 +15,44 @@ public class GameManager : MonoBehaviour
     public float ScoreP2 { get { return scoreP2;} set { scoreP2 = value; } }
 
     [SerializeField] private float duration;
+    
+    public bool gameover;
+    public bool isLeftWin;
+    public bool isTie;
     public static float curTime;
+    public static float minutes;
+    public static float seconds;
+    
+    public static GameManager instance;
+    
+    void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(this);
+        /*if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }*/
+    }
+
+    void Start()
+    {
+        gameover = false;
+        
+        scoreP1 = 0;
+        scoreP2 = 1; /////////
+
+        curTime = duration;
+    }
+
+    void Update()
+    {
+        Timing();
+    }
     
     public void PlayerGotHit(bool one)
     {
@@ -37,41 +74,28 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Time UP");
+            /*Debug.Log("Time UP");*/
+            if (scoreP1 > scoreP2)
+            {
+                isLeftWin = true;
+            }
+            else if (scoreP2 < scoreP1)
+            {
+                isLeftWin = false;
+            }
+            else
+            {
+                isTie = true;
+            }
+            
+            gameover = true;
             SceneManager.LoadScene(2);
         }
         
         minutes = Mathf.FloorToInt(curTime / 60f);
         seconds = Mathf.FloorToInt(curTime - minutes * 60);
     }
+
+
     
-    public static float minutes;
-    public static float seconds;
-    
-    public static GameManager instance;
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    void Start()
-    {
-        scoreP1 = 0;
-        scoreP2 = 0;
-
-        curTime = duration;
-    }
-
-    void Update()
-    {
-        Timing();
-    }
 }
