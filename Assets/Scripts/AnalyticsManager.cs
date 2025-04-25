@@ -60,12 +60,12 @@ public class AnalyticsManager : MonoBehaviour
     
     public CustomEvent leftScore = new CustomEvent("LeftScore")
     {
-        { "leftScore", scorePerHit}
+        {"score", scorePerHit}
     };
     
     public CustomEvent rightScore = new CustomEvent("RightScore")
     {
-        {"rightScore", scorePerHit}
+        {"score", scorePerHit}
     };
 
 
