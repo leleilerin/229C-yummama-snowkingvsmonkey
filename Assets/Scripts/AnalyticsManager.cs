@@ -15,11 +15,11 @@ public class AnalyticsManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            AnalyticsService.Instance.RecordEvent(leftWinCount);
+            AnalyticsService.Instance.RecordEvent(leftWin);
         }
         if (Input.GetKeyDown(KeyCode.B))
         {
-            AnalyticsService.Instance.RecordEvent(rightWinCount);
+            AnalyticsService.Instance.RecordEvent(rightWin);
         }
     }
 
@@ -29,14 +29,14 @@ public class AnalyticsManager : MonoBehaviour
         AnalyticsService.Instance.StartDataCollection();
     }
     
-    private CustomEvent leftWinCount = new CustomEvent("sideWinCount")
+    private CustomEvent leftWin = new CustomEvent("LeftWin")
     {
-        { "leftWin", 1 }
+        { "winCount", 1 }
     };
     
-    private CustomEvent rightWinCount = new CustomEvent("sideWinCount")
+    private CustomEvent rightWin = new CustomEvent("RightWin")
     {
-        { "rightWin", 1 }
+        { "winCount", 1 }
     };
 
     
