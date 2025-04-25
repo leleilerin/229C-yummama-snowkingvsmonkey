@@ -8,19 +8,13 @@ public class AnalyticsManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        DontDestroyOnLoad(this);
         Initialize();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            AnalyticsService.Instance.RecordEvent(leftWin);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            AnalyticsService.Instance.RecordEvent(rightWin);
-        }
+        
     }
 
     private async void Initialize()
@@ -29,6 +23,20 @@ public class AnalyticsManager : MonoBehaviour
         AnalyticsService.Instance.StartDataCollection();
     }
     
+    //Method
+    public void WinCount(bool isLeftWin)
+    {
+        if (isLeftWin)
+        {
+            AnalyticsService.Instance.RecordEvent(leftWin);
+        }
+        else
+        {
+            AnalyticsService.Instance.RecordEvent(rightWin);
+        }
+    }
+    
+    //Event
     private CustomEvent leftWin = new CustomEvent("LeftWin")
     {
         { "winCount", 1 }
