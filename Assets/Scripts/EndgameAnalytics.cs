@@ -48,7 +48,7 @@ public class EndgameAnalytics : MonoBehaviour
     public void ScoreCount()
     {
         AnalyticsService.Instance.RecordEvent(scoreCount);
-        Debug.Log(scoreP1 + scoreP2);
+        Debug.Log($"{scoreP1} : {scoreP2}");
     }
     
     //Event

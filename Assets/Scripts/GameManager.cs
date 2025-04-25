@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
         gameover = false;
         isTie = false;
         
-        scoreP1 = 0;
-        scoreP2 = 0;
+        scoreP1 = 20;
+        scoreP2 = 30;
 
         curTime = duration;
     }
